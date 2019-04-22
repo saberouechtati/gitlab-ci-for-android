@@ -25,8 +25,6 @@ RUN mkdir -p $ANDROID_HOME/licenses/ \
 RUN apt-get -qq update && \
     apt-get install -y -qqy --no-install-recommends \
       sudo
-      
-RUN ls /sdk/
   
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
