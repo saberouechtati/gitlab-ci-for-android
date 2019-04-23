@@ -33,7 +33,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER docker
 
 RUN sudo apt-get -qq update && \
-    sudo apt-get -o Dpkg::Options::="--force-overwrite" install -y openjdk-8-jdk && \
+    sudo apt-get -o Dpkg::Options::="--force-overwrite" install -y openjdk-11-jdk && \
     sudo apt-get install -y -qqy --no-install-recommends apt-utils \
       ca-certificates-java \
       bzip2 \
@@ -53,9 +53,9 @@ RUN sudo apt-get install wget
 RUN sudo wget -P /usr/local/share/ca-certificates/cacert.org http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt
 RUN sudo update-ca-certificates
 
-RUN sudo wget -p wrapper/dists https://services.gradle.org/distributions/gradle-4.10.1-all.zip
+ADD https://services.gradle.org/distributions/gradle-4.10.1-all.zip /tools.zip wrapper/dists
     
-RUN sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
+# RUN sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
     
 ADD http://dl.google.com/android/repository/tools_r${VERSION_SDK_TOOLS}-linux.zip /tools.zip
 RUN sudo unzip /tools.zip -d /sdk && \
