@@ -53,7 +53,7 @@ RUN sudo apt-get install wget
 RUN sudo wget -P /usr/local/share/ca-certificates/cacert.org http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt
 RUN sudo update-ca-certificates
 
-ADD https://services.gradle.org/distributions/gradle-4.10.1-all.zip /tools.zip wrapper/dists
+ADD https://services.gradle.org/distributions/gradle-4.10.1-all.zip wrapper/dists
     
 # RUN sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
     
